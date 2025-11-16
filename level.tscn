@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxj4kysfk6y22"]
+
+[ext_resource type="Texture2D" uid="uid://by2iwypnl8nft" path="res://assets/backrooms.png" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://b6hfm752w7jb7" path="res://player.tscn" id="2_vonw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vonw3"]
+size = Vector2(20, 760)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi3di"]
+size = Vector2(1280, 20)
+
+[node name="Level" type="Node2D"]
+
+[node name="Backround" type="Sprite2D" parent="."]
+modulate = Color(0.42745098, 0.39607844, 0.36078432, 1)
+scale = Vector2(0.8533333, 0.853)
+texture = ExtResource("1_u52ul")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("2_vonw3")]
+position = Vector2(640, 360)
+speed = 250
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="Verticals" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Verticals"]
+position = Vector2(-10, 359)
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders/Verticals"]
+position = Vector2(1290, 360)
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="Horizontals" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Horizontals"]
+position = Vector2(640, -10)
+shape = SubResource("RectangleShape2D_oi3di")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders/Horizontals"]
+position = Vector2(640, 730)
+shape = SubResource("RectangleShape2D_oi3di")
